@@ -1,13 +1,19 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import PageContainerStyled from '../components/styled-components/PageContainerStyled'
+import { useHistory } from 'react-router-dom'
+import ButtonStyled from '../components/styled-components/ButtonStyled'
+import Column1Styled from '../components/styled-components/Column1Styled'
 
 export default function ErrorPage() {
+    const history = useHistory()
+
+    function handleOnClick(){
+        history.push("/")
+    }
     return (
-        <PageContainerStyled>
+        <Column1Styled>
             <p>ERROR</p>
             <br/>
-            <Link to="/">Go back</Link>
-        </PageContainerStyled>
+            <ButtonStyled onClick={handleOnClick}>Back</ButtonStyled>
+        </Column1Styled>
     )
 }

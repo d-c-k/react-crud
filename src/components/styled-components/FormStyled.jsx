@@ -3,7 +3,12 @@ import styled from 'styled-components'
 const FormStyled = styled.form`
 	display: flex;
 	flex-direction: column;
-	align-content: space-between;
+
+	input{
+		width: 60%;
+		min-width: 30%;
+		float: right;
+	}
 `
 
 export default FormStyled
