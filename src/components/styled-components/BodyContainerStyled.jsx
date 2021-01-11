@@ -13,7 +13,7 @@ const BodyContainerStyled = styled.div`
 		}
 
 		&:hover{
-			color: red;
+			color: orangered;
 		}		
 	}
 `
