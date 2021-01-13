@@ -10,14 +10,14 @@ import Column1Styled from '../components/styled-components/Column1Styled'
 export default function LoginPage() {
 	const {setUser} = useContext(UserContext)
 	const [logIn, setLogIn] = useState({
-		user: "webb19@willandskill.se",
+		user: "Daniel.Koefoed@yh.nackademin.se",
 		password: "javascriptoramverk"
 	})
 	const history = useHistory()
 
 	function handleOnChange(e){
 		setLogIn({...logIn, [e.target.name]: e.target.value})
-	}
+	}	
 
 	function handleOnSubmit(e){
 		e.preventDefault()
@@ -38,7 +38,7 @@ export default function LoginPage() {
 		.then(res => res ? res.json() : (path = "error"))
 		.then(data => {
 			localStorage.setItem("logInToken", data.token)
-			history.push(path)
+			history.push(path)			
 		})
 		setUser(logIn.user)
 	}
@@ -47,11 +47,20 @@ export default function LoginPage() {
 		<Column1Styled>
 			<FormStyled onSubmit={handleOnSubmit}>
 				<label>User:
-					<input name="user" value={logIn.user} onChange={handleOnChange}></input>
+					<input 
+						name="user" 
+						value={logIn.user} 
+						onChange={handleOnChange} 
+					/>
 				</label>
 				<br/>
 				<label>Password:
-					<input name="password" value={logIn.password} onChange={handleOnChange}></input>
+					<input 
+						name="password" 
+						type="password"
+						value={logIn.password} 
+						onChange={handleOnChange} 
+					/>
 				</label>	
 				<br/>
 				<ButtonStyled type="submit">Log in</ButtonStyled>

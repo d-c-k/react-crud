@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
 import { Route, Switch } from 'react-router-dom'
-import BodyContainerStyled from './components/styled-components/BodyContainerStyled';
+
+import { UserContext } from './contexts/UserContext';
+
 import CustomersPage from './pages/CustomersPage';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 import ErrorPage from './pages/ErrorPage';
-import { UserContext } from './contexts/UserContext';
+import CreateCustomerPage from './pages/CreateCustomerPage';
+
+import BodyContainerStyled from './components/styled-components/BodyContainerStyled';
 
 function App() {
   const [user, setUser] = useState("")
@@ -17,6 +21,10 @@ function App() {
     <BodyContainerStyled>
       <UserContext.Provider value={UserContextValue}>
         <Switch> 
+          <Route path="/addcustomers">
+            <CreateCustomerPage />
+          </Route>
+
           <Route path="/customers">
             <CustomersPage />
           </Route>

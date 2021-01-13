@@ -10,7 +10,7 @@ export default function CustomersPage() {
 	return (
 		<>
 		<Column1Styled>
-			<p><Link to="/home">Home</Link>/Customers:</p>
+			<p><Link to="/home">Home</Link>/List of customers:</p>
 			<br/>
 
 		</Column1Styled>

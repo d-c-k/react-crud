@@ -1,7 +1,7 @@
 import styled from 'styled-components'
+import Column1Styled from './Column1Styled'
 
-const Column4Styled = styled.div`
-    grid-row: 2;
+const Column4Styled = styled(Column1Styled)`
     grid-column: 5;
 
     display: flex;
