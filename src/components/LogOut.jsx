@@ -17,7 +17,10 @@ export default function LogOut() {
 
 	return (
 		<>			
-			<p>User: <br/>{user}</p>
+			<p>User ID: {user.id}</p>
+			<p>{user.firstName} {user.lastName}</p>
+			<p>{user.email}</p>
+			<br/>
 			<ButtonStyled type="button" onClick={handleOnClick}>Log out</ButtonStyled>
 		</>
 	)

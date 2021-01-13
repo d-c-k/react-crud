@@ -8,32 +8,26 @@ import LogOut from '../components/LogOut'
 import Column1Styled from '../components/styled-components/Column1Styled'
 import Column2Styled from '../components/styled-components/Column2Styled'
 import Column4Styled from '../components/styled-components/Column4Styled'
-import CustomersListLink from '../components/CustomersListLink'
 
-export default function HomePage() {
+export default function CustomerDetailPage(props) {
 	const {customerData} = useContext(UserContext)
+	const customerId = props.match.params.id
+	console.log(customerData)
+	let currentIndex = customerData.map(item => item.id).indexOf(`id: ${customerId}`)
+	console.log(customerId)
+	console.log(currentIndex)
+	console.log(customerData.findIndex(i => i.id === customerId))
+	console.log(customerData[1].id)
 
 	return (
 		<>
-			<Column1Styled>			
-				<p>Home:</p>
-				<nav>
-					<Link to="/addcustomers">
-						<p>Add new customer</p>
-					</Link>
-				</nav>
+			<Column1Styled>
+				<p><Link to="/home">Home</Link>/:</p>
 			</Column1Styled>
 			<Column2Styled>
-				{customerData.length > 0 
-				?
-				customerData.map(item => {
-					return <CustomersListLink key={item.id} listData={item}/>
-				})
-				:
-				<p>Loading . . . </p>}				
 			</Column2Styled>
 			<Column4Styled>
-				<LogOut/>
+				<LogOut />
 			</Column4Styled>
 		</>
 	)

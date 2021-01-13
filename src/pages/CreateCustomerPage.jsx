@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
+
+import { UserContext } from '../contexts/UserContext'
 
 import LogOut from '../components/LogOut'
 
@@ -11,6 +13,8 @@ import ButtonStyled from '../components/styled-components/ButtonStyled'
 
 export default function CreateCustomerPage() {
 	const [formData, setFormData] = useState({})
+	const {setCustomerData} = useContext(UserContext)
+	const history = useHistory()
 
 	function handleOnChange(e) {
 		setFormData({...formData, [e.target.name]: e.target.value})
@@ -31,13 +35,45 @@ export default function CreateCustomerPage() {
 		)
 	}
 
+	function fetchData(){
+		const url =  "https://frebi.willandskill.eu/api/v1/customers/"
+		const token = localStorage.getItem("logInToken")
+		fetch(url, {
+			headers: {
+				"Content-Type": "application/json",
+				"Authorization": `Bearer ${token}`
+			}
+		})
+		.then(res => res.json())
+		.then(data => setCustomerData(data.results))
+	}
+
+	function handleOnSubmit(e) {
+		e.preventDefault()
+		const url = "https://frebi.willandskill.eu/api/v1/customers/"
+		const token = localStorage.getItem("logInToken")
+		fetch(url, {
+			method: "POST",
+			body: JSON.stringify(formData),
+			headers: {
+				"Content-Type": "application/json",
+				"Authorization": `Bearer ${token}`
+			}
+		})
+		.then(res => res.json())
+		.then(data => {			
+			history.push("/home")
+			fetchData()
+		})
+	}
+
 	return (
 		<>
 			<Column1Styled>
 				<p><Link to="/home">Home</Link>/Add new customer:</p>
 			</Column1Styled>
 			<Column2Styled>
-				<FormStyled>
+				<FormStyled onSubmit={handleOnSubmit}>
 					{renderInput("name", "Name")}
 					{renderInput("organisationNr", "Org. Number")}
 					{renderInput("vatNr", "VAT Number")}
