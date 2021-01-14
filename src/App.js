@@ -8,6 +8,7 @@ import HomePage from './pages/HomePage';
 import ErrorPage from './pages/ErrorPage';
 import CreateCustomerPage from './pages/CreateCustomerPage';
 import CustomerDetailPage from './pages/CustomerDetailPage';
+import EditCustomerPage from './pages/EditCustomerPage';
 
 import BodyContainerStyled from './components/styled-components/BodyContainerStyled';
 
@@ -23,6 +24,8 @@ function App() {
     <BodyContainerStyled>
       <UserContext.Provider value={UserContextValue}>
         <Switch> 
+          <Route path="/customers/:id/edit" component={EditCustomerPage} />
+
           <Route path="/customers/:id" component={CustomerDetailPage} />
 
           <Route path="/addcustomers">

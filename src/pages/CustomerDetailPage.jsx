@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import { UserContext } from '../contexts/UserContext'
 
@@ -12,11 +12,39 @@ import ButtonStyled from '../components/styled-components/ButtonStyled'
 import TableStyled from '../components/styled-components/TableStyled'
 
 export default function CustomerDetailPage(props) {
-	const {customerData} = useContext(UserContext)
+	const {customerData, setCustomerData} = useContext(UserContext)
 	const customerId = Number(props.match.params.id)
 	const currentIndex = customerData.map(item => item.id).indexOf(customerId)
+	const history = useHistory()
 
-	console.log(currentIndex)
+	function fetchData(){
+		const url =  "https://frebi.willandskill.eu/api/v1/customers/"
+		const token = localStorage.getItem("logInToken")
+		fetch(url, {
+			headers: {
+				"Content-Type": "application/json",
+				"Authorization": `Bearer ${token}`
+			}
+		})
+		.then(res => res.json())
+		.then(data => setCustomerData(data.results))
+	}
+
+	function deleteCustomer(){
+		const url = `https://frebi.willandskill.eu/api/v1/customers/${customerId}/`
+		const token = localStorage.getItem("logInToken")
+		fetch(url, {
+			method: "DELETE",
+			headers: {
+				"Content-Type": "application/json",
+				"Authorization": `Bearer ${token}`
+			}
+		})
+		.then(() => {
+			fetchData()
+			history.push('/home')
+		})
+	}
 
 	return (
 		<>
@@ -70,8 +98,8 @@ export default function CustomerDetailPage(props) {
 						</tr>
 					</tbody>
 				</TableStyled>
-				<ButtonStyled type="button">Edit</ButtonStyled>
-				<ButtonStyled type="button">Delete</ButtonStyled>
+				<Link to={`/customers/${customerId}/edit`}><ButtonStyled type="button">Edit</ButtonStyled></Link>
+				<ButtonStyled type="button" onClick={deleteCustomer}>Delete</ButtonStyled>
 			</Column2Styled>
 			<Column4Styled>
 				<LogOut />
