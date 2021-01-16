@@ -54,26 +54,51 @@ export default function CustomerDetailPage(props) {
 			<Column2Styled>
 				<TableStyled>
 					<tbody>
+					<tr>
+							<td>Name:</td>
+							<td>{customerData[currentIndex].name}</td>
+						</tr>
 						<tr>
-							<td>Org. number:</td>
+							<td>
+								<br/>
+							</td>
+						</tr>
+						<tr>
+							<td>Org. Number:</td>
 							<td>{customerData[currentIndex].organisationNr}</td>
 						</tr>
-
+						<tr>
+							<td>
+								<br/>
+							</td>
+						</tr>
 						<tr>
 							<td>VAT Number:</td>
 							<td>{customerData[currentIndex].vatNr}</td>
 						</tr>
-						
+						<tr>
+							<td>
+								<br/>
+							</td>
+						</tr>
 						<tr>
 							<td>Reference:</td>
 							<td>{customerData[currentIndex].reference}</td>
 						</tr>
-
+						<tr>
+							<td>
+								<br/>
+							</td>
+						</tr>
 						<tr>
 							<td>Payment Term:</td>
 							<td>{customerData[currentIndex].paymentTerm}</td>
 						</tr>
-
+						<tr>
+							<td>
+								<br/>
+							</td>
+						</tr>
 						<tr>
 							<td>Website:</td>
 							<td>
@@ -82,7 +107,11 @@ export default function CustomerDetailPage(props) {
 								</a>
 							</td>
 						</tr>
-
+						<tr>
+							<td>
+								<br/>
+							</td>
+						</tr>
 						<tr>
 							<td>Email:</td>
 							<td>
@@ -91,7 +120,11 @@ export default function CustomerDetailPage(props) {
 								</a>
 							</td>
 						</tr>
-
+						<tr>
+							<td>
+								<br/>
+							</td>
+						</tr>
 						<tr>
 							<td>Phone Number:</td>
 							<td>{customerData[currentIndex].phoneNumber}</td>
@@ -100,6 +133,7 @@ export default function CustomerDetailPage(props) {
 				</TableStyled>
 				<Link to={`/customers/${customerId}/edit`}><ButtonStyled type="button">Edit</ButtonStyled></Link>
 				<ButtonStyled type="button" onClick={deleteCustomer}>Delete</ButtonStyled>
+				<Link to={"/home"}><ButtonStyled type="button">Back</ButtonStyled></Link>
 			</Column2Styled>
 			<Column4Styled>
 				<LogOut />

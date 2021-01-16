@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState ,useEffect} from 'react'
 import { Link } from 'react-router-dom'
 
 import { UserContext } from '../contexts/UserContext'
@@ -11,7 +11,12 @@ import Column4Styled from '../components/styled-components/Column4Styled'
 import CustomersListLink from '../components/CustomersListLink'
 
 export default function HomePage() {
+	//const [loading, setLoading] = useState(true)
 	const {customerData} = useContext(UserContext)
+
+	// useEffect(() => {
+	// 	setTimeout(() => setLoading(false), 500)
+	// }, [])
 
 	return (
 		<>
@@ -24,13 +29,14 @@ export default function HomePage() {
 				</nav>
 			</Column1Styled>
 			<Column2Styled>
-				{customerData.length > 0 
+				{customerData 
 				?
 				customerData.map(item => {
 					return <CustomersListLink key={item.id} listData={item}/>
 				})
 				:
-				<p>Loading . . . </p>}				
+				<p>No data</p>			
+				}
 			</Column2Styled>
 			<Column4Styled>
 				<LogOut/>
