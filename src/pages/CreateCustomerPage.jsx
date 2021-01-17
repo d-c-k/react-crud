@@ -49,8 +49,6 @@ export default function CreateCustomerPage() {
 		formData.vatNr.charAt(1) === "E" && 
 		digits.test(formData.vatNr) === true ? 
 		setValid(true) : setValid(false)
-
-    console.log(valid, formData.vatNr, formData.vatNr.length)
   }
 
 	function fetchData(){
@@ -108,7 +106,6 @@ export default function CreateCustomerPage() {
 					{renderInput("phoneNumber", "Phone Number", "tel")}
 					<ButtonStyled type="submit">Add</ButtonStyled>					
 				</FormStyled>
-				<p>{JSON.stringify(formData.vatNr)}</p>
 			</Column2Styled>   
 			<Column4Styled>
 				<LogOut />

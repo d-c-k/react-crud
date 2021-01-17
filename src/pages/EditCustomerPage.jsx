@@ -54,8 +54,6 @@ export default function EditCustomerPage(props) {
 		customerData[currentIndex].vatNr.charAt(1) === "E" && 
 		digits.test(customerData[currentIndex].vatNr) === true ? 
 		setValid(true) : setValid(false)
-
-    console.log(valid, customerData[currentIndex].vatNr, customerData[currentIndex].vatNr.length)
   }
 
 	function fetchData(){
@@ -102,7 +100,6 @@ export default function EditCustomerPage(props) {
 				<FormStyled onSubmit={handleOnSubmit}>
 					{renderInput("name", "Name")}
 					{renderInput("organisationNr", "Org. Number")}
-					{/* {renderInput("vatNr", "VAT Number")} */}
 					<label>VAT Number:
 						<ValidatingInputStyled valid={valid} type="text" name="vatNr" value={customerData[currentIndex].vatNr} onChange={handleOnChange} placeholder="Format: SE(10 digits)"/>
 					</label>					

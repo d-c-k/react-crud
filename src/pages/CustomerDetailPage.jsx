@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom'
 import { UserContext } from '../contexts/UserContext'
 
 import LogOut from '../components/LogOut'
+import TableSpacer from '../components/TableSpacer'
 
 import Column1Styled from '../components/styled-components/Column1Styled'
 import Column2Styled from '../components/styled-components/Column2Styled'
@@ -58,47 +59,27 @@ export default function CustomerDetailPage(props) {
 							<td>Name:</td>
 							<td>{customerData[currentIndex].name}</td>
 						</tr>
-						<tr>
-							<td>
-								<br/>
-							</td>
-						</tr>
+						<TableSpacer/>
 						<tr>
 							<td>Org. Number:</td>
 							<td>{customerData[currentIndex].organisationNr}</td>
 						</tr>
-						<tr>
-							<td>
-								<br/>
-							</td>
-						</tr>
+						<TableSpacer/>
 						<tr>
 							<td>VAT Number:</td>
 							<td>{customerData[currentIndex].vatNr}</td>
 						</tr>
-						<tr>
-							<td>
-								<br/>
-							</td>
-						</tr>
+						<TableSpacer/>
 						<tr>
 							<td>Reference:</td>
 							<td>{customerData[currentIndex].reference}</td>
 						</tr>
-						<tr>
-							<td>
-								<br/>
-							</td>
-						</tr>
+						<TableSpacer/>
 						<tr>
 							<td>Payment Term:</td>
 							<td>{customerData[currentIndex].paymentTerm}</td>
 						</tr>
-						<tr>
-							<td>
-								<br/>
-							</td>
-						</tr>
+						<TableSpacer/>
 						<tr>
 							<td>Website:</td>
 							<td>
@@ -107,11 +88,7 @@ export default function CustomerDetailPage(props) {
 								</a>
 							</td>
 						</tr>
-						<tr>
-							<td>
-								<br/>
-							</td>
-						</tr>
+						<TableSpacer/>
 						<tr>
 							<td>Email:</td>
 							<td>
@@ -120,11 +97,7 @@ export default function CustomerDetailPage(props) {
 								</a>
 							</td>
 						</tr>
-						<tr>
-							<td>
-								<br/>
-							</td>
-						</tr>
+						<TableSpacer/>
 						<tr>
 							<td>Phone Number:</td>
 							<td>{customerData[currentIndex].phoneNumber}</td>
