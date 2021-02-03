@@ -49,11 +49,11 @@ export default function EditCustomerPage(props) {
 	function handleValidation(){
     let digits = RegExp(/[0-9]{10}/)	
     
-		customerData[currentIndex].vatNr.length === 12 && 
-		customerData[currentIndex].vatNr.charAt(0) === "S" &&
-		customerData[currentIndex].vatNr.charAt(1) === "E" && 
-		digits.test(customerData[currentIndex].vatNr) === true ? 
-		setValid(true) : setValid(false)
+	customerData[currentIndex].vatNr.length === 12 && 
+	customerData[currentIndex].vatNr.charAt(0) === "S" &&
+	customerData[currentIndex].vatNr.charAt(1) === "E" && 
+	digits.test(customerData[currentIndex].vatNr) === true ? 
+	setValid(true) : setValid(false)
   }
 
 	function fetchData(){
