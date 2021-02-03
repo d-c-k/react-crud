@@ -10,7 +10,7 @@ import Column1Styled from '../components/styled-components/Column1Styled'
 export default function LoginPage() {
 	const {setUser, setCustomerData} = useContext(UserContext)
 	const [logIn, setLogIn] = useState({
-		user: "",
+		user: "Daniel.Koefoed@yh.nackademin.se",
 		password: ""
 	})
 	const history = useHistory()
